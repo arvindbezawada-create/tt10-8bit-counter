@@ -10,7 +10,7 @@ module tt_um_example (
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
     output wire [7:0] uio_out,  // IOs: Output path
-    input  wire [7:0] uio_oe,   // IOs: Enable path (1=output, 0=input)
+    output wire [7:0] uio_oe,   // IOs: Enable path (1=output, 0=input)
     input  wire       ena,      // enable pin (active high)
     input  wire       clk,      // clock pin
     input  wire       rst_n     // reset pin (active low)
