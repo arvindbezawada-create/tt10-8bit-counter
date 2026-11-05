@@ -3,7 +3,7 @@
 
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import ClockCycles
+from cocotb.triggers import ClockCycles, FallingEdge
 
 
 @cocotb.test()
@@ -25,16 +25,14 @@ async def test_project(dut):
 
     dut._log.info("Test project behavior")
 
-    # Set the input values you want to test
-    dut.ui_in.value = 20
-    dut.uio_in.value = 30
+    # 1. Enable the counter by making sure ui_in[0] is equal to 1.
+    # (1 is 00000001 in binary, which sets ui_in[0] high)
+    dut.ui_in.value = 1 
+    dut.uio_in.value = 0
 
-    # Wait for one clock cycle to see the output values
-    await ClockCycles(dut.clk, 1)
+    # 2. Wait for exactly 50 clock cycles so the counter increments to 50
+    await ClockCycles(dut.clk, 50)
 
-    # The following assersion is just an example of how to check the output values.
-    # Change it to match the actual expected output of your module:
+    # 3. Assert that the output has reached 50
     assert dut.uo_out.value == 50
-
-    # Keep testing the module by changing the input values, waiting for
-    # one or more clock cycles, and asserting the expected output values.
+    dut._log.info("Test passed successfully!")
