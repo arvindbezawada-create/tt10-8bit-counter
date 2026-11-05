@@ -1,32 +1,37 @@
 # Tiny Tapeout project information
 project:
-  title:        "8-bit Binary Counter"      # Must not be empty
-  author:       "Venkata Aravind Bezawada"  # Must not be empty
-  description:  "A clean synchronous 8-bit multi-mode binary counter targeting SkyWater 130." # Must not be empty
+  title:        "8-bit Binary Counter"
+  author:       "Venkata Aravind Bezawada"
+  description:  "A clean synchronous 8-bit multi-mode binary counter targeting SkyWater 130."
   how_it_works: "Increments an internal 8-bit register on every rising clock edge when input bit 0 is pulled high."
-  how_to_test:  "Pull rst_n low to clear, apply high state to ui_in[0], and cycle the clock pin to watch outputs change."
+  how_to_test:  "Pull rst_n low to clear, apply high state to ui_in, and cycle the clock pin to watch outputs change."
   language:     "Verilog"
   clock_hz:     10000000
+  tiles:        "1x1"             # The physical size your macro takes up on the multi-project chip
+  top_module:   "tt_um_example"   # Must exactly match your module name inside your Verilog file
+  source_files:                   # The precise source files to compile
+    - "src/project.v"
 
-# Pinout documentation
-inputs:
-  - "enable"
-  - "unused"
-  - "unused"
-  - "unused"
-  - "unused"
-  - "unused"
-  - "unused"
-  - "unused"
-outputs:
-  - "bit_0"
-  - "bit_1"
-  - "bit_2"
-  - "bit_3"
-  - "bit_4"
-  - "bit_5"
-  - "bit_6"
-  - "bit_7"
+# Pinout definition section
+pinout:
+  inputs:
+    - "enable"
+    - "unused"
+    - "unused"
+    - "unused"
+    - "unused"
+    - "unused"
+    - "unused"
+    - "unused"
+  outputs:
+    - "bit_0"
+    - "bit_1"
+    - "bit_2"
+    - "bit_3"
+    - "bit_4"
+    - "bit_5"
+    - "bit_6"
+    - "bit_7"
 
 # Do not change!
 yaml_version: 6
