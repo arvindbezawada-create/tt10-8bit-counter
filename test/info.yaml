@@ -1,32 +1,43 @@
 # Tiny Tapeout project information
 project:
-  title:        "8-bit Binary Counter"      # Must not be empty
-  author:       "Venkata Aravind Bezawada"  # Must not be empty
-  description:  "A clean synchronous 8-bit multi-mode binary counter targeting SkyWater 130." # Must not be empty
+  title:        "8-bit Binary Counter"
+  author:       "Venkata Aravind Bezawada"
+  description:  "A clean synchronous 8-bit multi-mode binary counter targeting SkyWater 130."
   how_it_works: "Increments an internal 8-bit register on every rising clock edge when input bit 0 is pulled high."
-  how_to_test:  "Pull rst_n low to clear, apply high state to ui_in[0], and cycle the clock pin to watch outputs change."
+  how_to_test:  "Pull rst_n low to clear, apply high state to ui_in, and cycle the clock pin to watch outputs change."
   language:     "Verilog"
   clock_hz:     10000000
+  tiles:        "1x1"
+  top_module:   "tt_um_example"
+  source_files:
+    - "src/project.v"
 
-# Pinout documentation
-inputs:
-  - "enable"
-  - "unused"
-  - "unused"
-  - "unused"
-  - "unused"
-  - "unused"
-  - "unused"
-  - "unused"
-outputs:
-  - "bit_0"
-  - "bit_1"
-  - "bit_2"
-  - "bit_3"
-  - "bit_4"
-  - "bit_5"
-  - "bit_6"
-  - "bit_7"
+# Explicit Pin Map Configuration
+pinout:
+  ui[0]: "enable"
+  ui[1]: "unused"
+  ui[2]: "unused"
+  ui[3]: "unused"
+  ui[4]: "unused"
+  ui[5]: "unused"
+  ui[6]: "unused"
+  ui[7]: "unused"
+  uo[0]: "bit_0"
+  uo[1]: "bit_1"
+  uo[2]: "bit_2"
+  uo[3]: "bit_3"
+  uo[4]: "bit_4"
+  uo[5]: "bit_5"
+  uo[6]: "bit_6"
+  uo[7]: "bit_7"
+  uio[0]: "unused"
+  uio[1]: "unused"
+  uio[2]: "unused"
+  uio[3]: "unused"
+  uio[4]: "unused"
+  uio[5]: "unused"
+  uio[6]: "unused"
+  uio[7]: "unused"
 
 # Do not change!
 yaml_version: 6
