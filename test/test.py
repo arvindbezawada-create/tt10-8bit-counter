@@ -33,6 +33,9 @@ async def test_project(dut):
     # 2. Wait for exactly 50 clock cycles so the counter increments to 50
     await ClockCycles(dut.clk, 50)
 
-    # 3. Assert that the output has reached 50
+    # 3. ADD THIS LINE: Wait for the falling edge so the 50th count fully stabilizes
+    await FallingEdge(dut.clk)
+
+    # 4. Assert that the output has reached 50
     assert dut.uo_out.value == 50
     dut._log.info("Test passed successfully!")
